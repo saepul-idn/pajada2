@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/iming.css">
+    <title>judatul huda</title>
+</head>
+<body>
+    <div class="kotak">
+        <header class="header">
+            <img src="" alt="" class="img-icons">
+            <h2 class="judul-halaman">Pajada2</h2>
+            <na class="navlink">
+                <a href="#Kegiatan" onclick="kegiatan()">Kegiatan</a>
+                <a href="">Profil</a>
+                <a href="">Pendaftaran</a>
+            </na>
+        </header>
+
+        <div class="kotak1">
+            <h2 class="judul-halaman">
+                <span>Pondok Pesantren</span>
+                 Judatul Huda
+            </h2>
+            <p class="secondary" style="margin-left: 10px;">Update: 
+                <span class="hck">11/12/2023</span>
+            </p>
+            <img src="./img/pajada2.jpg" alt="">
+        </div>
+
+        <div class="kotak1">
+            <section id="fileContent"></section>
+        </div>
+
+        <!-- <div id="Kegiatan"></div> -->
+        <div class="kotak2" id="Kegiatan">
+            <img src="./img/p2.jpg" alt="">
+            <section id="txt-kegiatan"></section>
+        </div>
+    </div>
+
+
+        <script>
+            //
+        var fileContentElement = document.getElementById('fileContent');
+    
+        // Ganti 'teknologi.txt' dengan path file yang sesuai
+        fetch('./txt/art.ponpes.txt')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Pecahkan teks menjadi baris dan tambahkan spasi di setiap baris
+                var lines = data.split('\n');
+                fileContentElement.innerHTML = lines.map(line => line + '<br>').join('');
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+            //
+            function kegiatan(){
+            var fileContentElement = document.getElementById('txt-kegiatan');
+            fetch('./txt/kegiatan.txt')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    // Pecahkan teks menjadi baris dan tambahkan spasi di setiap baris
+                    var lines = data.split('\n');
+                    fileContentElement.innerHTML = lines.map(line => line + '<br>').join('');
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });    
+            }
+
+        </script>
+</body>
+</html>
